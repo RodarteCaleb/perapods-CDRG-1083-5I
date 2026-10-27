@@ -1,0 +1,441 @@
+<!-- Rodarte Gonzalez Caleb Daniel 5-I 1083 -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA Perapods - Tienda Oficial</title>
+
+    <style>
+        /* --- ESTILOS GENERALES Y RESET --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f4f4f7;
+            color: #222222;
+            line-height: 1.5;
+        }
+
+        /* --- MENÚ DE NAVEGACIÓN --- */
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #dddddd;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            max-width: 1050px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #222222;
+            text-decoration: none;
+        }
+
+        .logo svg {
+            fill: #2e7d32; /* Color verde característico de la pera */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555555;
+            font-size: 15px;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #2e7d32;
+        }
+
+        /* --- SECCIÓN HERO / BIENVENIDA --- */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #111111;
+        }
+
+        .hero p {
+            font-size: 17px;
+            color: #666666;
+            margin-bottom: 25px;
+        }
+
+        .hero-botones {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-verde {
+            background-color: #2e7d32;
+            color: white;
+        }
+
+        .btn-verde:hover {
+            background-color: #236326;
+        }
+
+        .btn-gris {
+            background-color: #e0e0e0;
+            color: #333333;
+        }
+
+        .btn-gris:hover {
+            background-color: #d0d0d0;
+        }
+
+        /* --- CONTENEDORES Y CATÁLOGO --- */
+        .contenedor {
+            max-width: 1050px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .titulo-seccion {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #111111;
+        }
+
+        .grid-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .tarjeta-producto {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: box-shadow 0.3s;
+        }
+
+        .tarjeta-producto:hover {
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        }
+
+        .tarjeta-producto img {
+            width: 100%;
+            height: 170px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        .tarjeta-producto h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #222222;
+        }
+
+        .tarjeta-producto .precio {
+            font-size: 16px;
+            color: #2e7d32;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* --- SECCIÓN DE FORMULARIOS --- */
+        .seccion-formularios {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .caja-form {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 420px;
+            border: 1px solid #e0e0e0;
+            scroll-margin-top: 90px;
+        }
+
+        .caja-form h2 {
+            margin-bottom: 20px;
+            font-size: 22px;
+            text-align: center;
+            color: #111111;
+        }
+
+        .campo {
+            margin-bottom: 18px;
+        }
+
+        .campo label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 14px;
+            color: #444444;
+            font-weight: bold;
+        }
+
+        .campo input {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .campo input:focus {
+            border-color: #2e7d32;
+        }
+
+        .btn-enviar {
+            width: 100%;
+            padding: 12px;
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-enviar:hover {
+            background-color: #236326;
+        }
+
+        /* --- NOTIFICACIÓN PERSONALIZADA (REEMPLAZO DE ALERT) --- */
+        .toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #2e7d32;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 14px 20px;
+            position: fixed;
+            z-index: 1000;
+            right: 20px;
+            bottom: 20px;
+            font-size: 15px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .toast.mostrar {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* --- PIE DE PÁGINA --- */
+        footer {
+            background-color: #ffffff;
+            border-top: 1px solid #dddddd;
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 60px;
+            font-weight: bold;
+            color: #333333;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Rodarte Gonzalez Caleb Daniel 5-I 1083 -->
+
+    <!-- MENÚ DE NAVEGACIÓN -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <!-- SVG Icono Pera estilo PearPhone -->
+                <svg width="28" height="32" viewBox="0 0 100 120">
+                    <!-- Tallo y Hoja -->
+                    <path d="M 55 5 C 65 5, 75 15, 60 30 C 50 25, 45 15, 55 5 Z" />
+                    <!-- Cuerpo de la Pera -->
+                    <path d="M 50 32 C 35 32, 25 45, 25 60 C 25 80, 15 85, 25 105 C 35 120, 65 120, 75 105 C 80 97, 80 90, 72 85 C 60 78, 62 55, 75 52 C 68 38, 60 32, 50 32 Z" />
+                </svg>
+                AURA Perapods
+            </a>
+            <ul class="nav-links">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#login">Iniciar Sesión</a></li>
+                <li><a href="#registro">Registrarse</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- SECCIÓN HERO DE BIENVENIDA -->
+    <section class="hero">
+        <h1>¡Bienvenido a AURA Perapods!</h1>
+        <p>Los mejores auriculares inalámbricos con el diseño oficial de la Pera.</p>
+        <div class="hero-botones">
+            <a href="#login" class="btn btn-verde">Iniciar Sesión</a>
+            <a href="#registro" class="btn btn-gris">Crear Cuenta</a>
+        </div>
+    </section>
+
+    <!-- Rodarte Gonzalez Caleb Daniel 5-I 1083 -->
+
+    <!-- CATÁLOGO DE PRODUCTOS -->
+    <section class="contenedor" id="catalogo">
+        <h2 class="titulo-seccion">Nuestros Perapods</h2>
+        <div class="grid-productos">
+            
+            <!-- PRODUCTO 1 -->
+            <div class="tarjeta-producto">
+                <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MME73?wid=532&hei=532&fmt=jpeg" alt="Perapods 2">
+                <h3>Perapods (2.ª gen)</h3>
+                <p class="precio">$2,499 MXN</p>
+                <button class="btn btn-verde" onclick="simularCompra('Perapods (2.ª gen)')">Comprar</button>
+            </div>
+
+            <!-- PRODUCTO 2 -->
+            <div class="tarjeta-producto">
+                <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MME73_AV1?wid=532&hei=532&fmt=jpeg" alt="Perapods 3">
+                <h3>Perapods (3.ª gen)</h3>
+                <p class="precio">$3,499 MXN</p>
+                <button class="btn btn-verde" onclick="simularCompra('Perapods (3.ª gen)')">Comprar</button>
+            </div>
+
+            <!-- PRODUCTO 3 -->
+            <div class="tarjeta-producto">
+                <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MQD83?wid=532&hei=532&fmt=jpeg" alt="Perapods Pro 2">
+                <h3>Perapods Pro (2.ª gen)</h3>
+                <p class="precio">$4,999 MXN</p>
+                <button class="btn btn-verde" onclick="simularCompra('Perapods Pro (2.ª gen)')">Comprar</button>
+            </div>
+
+            <!-- PRODUCTO 4 -->
+            <div class="tarjeta-producto">
+                <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-silver-202011?wid=532&hei=532&fmt=jpeg" alt="Perapods Max">
+                <h3>Perapods Max</h3>
+                <p class="precio">$11,999 MXN</p>
+                <button class="btn btn-verde" onclick="simularCompra('Perapods Max')">Comprar</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Rodarte Gonzalez Caleb Daniel 5-I 1083 -->
+
+    <!-- SECCIÓN DE FORMULARIOS -->
+    <section class="contenedor seccion-formularios">
+        
+        <!-- INICIAR SESIÓN -->
+        <div class="caja-form" id="login">
+            <h2>Iniciar Sesión</h2>
+            <form action="login.php" method="POST">
+                <div class="campo">
+                    <label for="login-email">Correo Electrónico:</label>
+                    <input type="email" id="login-email" name="email" required placeholder="ejemplo@correo.com">
+                </div>
+                <div class="campo">
+                    <label for="login-password">Contraseña:</label>
+                    <input type="password" id="login-password" name="password" required placeholder="*****">
+                </div>
+                <button type="submit" class="btn-enviar">Entrar</button>
+            </form>
+        </div>
+
+        <!-- REGISTRO DE USUARIO -->
+        <div class="caja-form" id="registro">
+            <h2>Crear Cuenta</h2>
+            <form action="registro.php" method="POST">
+                <div class="campo">
+                    <label for="reg-nombre">Nombre Completo:</label>
+                    <input type="text" id="reg-nombre" name="nombre" required placeholder="Tu Nombre Completo">
+                </div>
+                <div class="campo">
+                    <label for="reg-email">Correo Electrónico:</label>
+                    <input type="email" id="reg-email" name="email" required placeholder="ejemplo@correo.com">
+                </div>
+                <div class="campo">
+                    <label for="reg-password">Contraseña:</label>
+                    <input type="password" id="reg-password" name="password" required placeholder="*****">
+                </div>
+                <button type="submit" class="btn-enviar">Registrarse</button>
+            </form>
+        </div>
+
+    </section>
+
+    <!-- NOTIFICACIÓN DE NOTAS AL USUARIO -->
+    <div id="toast" class="toast">Mensaje</div>
+
+    <!-- PIE DE PÁGINA (SOLO DATOS DEL ALUMNO) -->
+    <footer>
+        Rodarte Gonzalez Caleb Daniel 5-I 1083
+    </footer>
+
+    <!-- INTERACTIVIDAD MÍNIMA -->
+    <script>
+        function simularCompra(producto) {
+            const toast = document.getElementById('toast');
+            toast.textContent = '¡Añadido ' + producto + ' al carrito!';
+            toast.classList.add('mostrar');
+            
+            setTimeout(() => {
+                toast.classList.remove('mostrar');
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
